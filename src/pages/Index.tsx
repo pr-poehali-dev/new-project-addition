@@ -32,21 +32,24 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       <header className="border-b sticky top-0 bg-white z-50">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <Icon name="Car" size={32} className="text-primary" />
-            <span className="text-2xl font-bold">АвтоДвор</span>
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2">
+              <Icon name="Car" size={28} className="text-primary" />
+              <span className="text-xl md:text-2xl font-bold">АвтоДвор</span>
+            </div>
+            <nav className="hidden lg:flex items-center gap-6">
+              <a href="#services" className="hover:text-primary transition">Услуги</a>
+              <a href="#process" className="hover:text-primary transition">Как работаем</a>
+              <a href="#benefits" className="hover:text-primary transition">Преимущества</a>
+              <a href="#contacts" className="hover:text-primary transition">Контакты</a>
+            </nav>
+            <a href="tel:+79898380888" className="flex items-center gap-1 md:gap-2 font-bold text-sm md:text-lg hover:text-primary transition whitespace-nowrap">
+              <Icon name="Phone" size={18} className="flex-shrink-0" />
+              <span className="hidden sm:inline">+7 (989) 838-08-88</span>
+              <span className="sm:hidden">Позвонить</span>
+            </a>
           </div>
-          <nav className="hidden md:flex items-center gap-6">
-            <a href="#services" className="hover:text-primary transition">Услуги</a>
-            <a href="#process" className="hover:text-primary transition">Как работаем</a>
-            <a href="#benefits" className="hover:text-primary transition">Преимущества</a>
-            <a href="#contacts" className="hover:text-primary transition">Контакты</a>
-          </nav>
-          <a href="tel:+79898380888" className="flex items-center gap-2 font-bold text-lg hover:text-primary transition">
-            <Icon name="Phone" size={20} />
-            +7 (989) 838-08-88
-          </a>
         </div>
       </header>
 
@@ -54,35 +57,37 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
                 Выкупим ваш автомобиль за <span className="text-primary">30 минут</span>
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8">
                 Быстро. Выгодно. Надежно.<br/>
                 Любое состояние, любой год выпуска
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Button size="lg" className="text-lg px-8" onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}>
+              <div className="flex flex-wrap gap-3 md:gap-4">
+                <Button size="lg" className="text-base md:text-lg px-6 md:px-8" onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}>
                   Узнать цену
-                  <Icon name="ArrowRight" size={20} className="ml-2" />
+                  <Icon name="ArrowRight" size={18} className="ml-2" />
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8">
-                  <Icon name="Phone" size={20} className="mr-2" />
-                  Позвонить
+                <Button size="lg" variant="outline" className="text-base md:text-lg px-6 md:px-8" asChild>
+                  <a href="tel:+79898380888">
+                    <Icon name="Phone" size={18} className="mr-2" />
+                    Позвонить
+                  </a>
                 </Button>
               </div>
-              <div className="grid grid-cols-3 gap-4 mt-12">
+              <div className="grid grid-cols-3 gap-2 md:gap-4 mt-8 md:mt-12">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">5000+</div>
-                  <div className="text-sm text-gray-600">выкупленных авто</div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">5000+</div>
+                  <div className="text-xs md:text-sm text-gray-600">выкупленных авто</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">30 мин</div>
-                  <div className="text-sm text-gray-600">средний срок сделки</div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">30 мин</div>
+                  <div className="text-xs md:text-sm text-gray-600">средний срок сделки</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-1">100%</div>
-                  <div className="text-sm text-gray-600">честная оценка</div>
+                  <div className="text-2xl md:text-3xl font-bold text-primary mb-1">100%</div>
+                  <div className="text-xs md:text-sm text-gray-600">честная оценка</div>
                 </div>
               </div>
             </div>
