@@ -27,9 +27,9 @@ const Index = () => {
             <a href="#benefits" className="hover:text-primary transition">Преимущества</a>
             <a href="#contacts" className="hover:text-primary transition">Контакты</a>
           </nav>
-          <a href="tel:+79991234567" className="flex items-center gap-2 font-bold text-lg hover:text-primary transition">
+          <a href="tel:+79898380888" className="flex items-center gap-2 font-bold text-lg hover:text-primary transition">
             <Icon name="Phone" size={20} />
-            +7 (999) 123-45-67
+            +7 (989) 838-08-88
           </a>
         </div>
       </header>
@@ -242,8 +242,8 @@ const Index = () => {
                 <Icon name="Phone" size={28} className="text-primary" />
               </div>
               <h3 className="font-bold text-lg mb-2">Телефон</h3>
-              <a href="tel:+79991234567" className="text-primary text-xl font-bold">
-                +7 (999) 123-45-67
+              <a href="tel:+79898380888" className="text-primary text-xl font-bold">
+                +7 (989) 838-08-88
               </a>
               <p className="text-sm text-gray-600 mt-2">Круглосуточно</p>
             </Card>
@@ -295,7 +295,7 @@ const Index = () => {
             <div>
               <h4 className="font-bold mb-4">Контакты</h4>
               <ul className="space-y-2 text-gray-400">
-                <li>+7 (999) 123-45-67</li>
+                <li>+7 (989) 838-08-88</li>
                 <li>info@avtodvor-nov.ru</li>
                 <li>г. Новосибирск</li>
               </ul>
