@@ -2,11 +2,27 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Index = () => {
   const [phone, setPhone] = useState("");
   const [carInfo, setCarInfo] = useState("");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const carSlides = [
+    { img: "https://cdn.poehali.dev/projects/94f46246-2443-478a-a915-e6ffdd5458ca/files/37076115-93ae-4344-8ff7-1358cedbdabf.jpg", title: "Исправные авто", desc: "Чистые документы, отличное состояние" },
+    { img: "https://cdn.poehali.dev/projects/94f46246-2443-478a-a915-e6ffdd5458ca/files/db39e250-e182-4413-bf69-72d7a0514bb1.jpg", title: "Легковые авто", desc: "Седаны, хэтчбеки, универсалы" },
+    { img: "https://cdn.poehali.dev/projects/94f46246-2443-478a-a915-e6ffdd5458ca/files/f43a5ed3-ce5e-4705-9b23-1ca6ba07f3d4.jpg", title: "Внедорожники", desc: "SUV любых марок и моделей" },
+    { img: "https://cdn.poehali.dev/projects/94f46246-2443-478a-a915-e6ffdd5458ca/files/5980fe8b-cb2d-4d48-b1aa-c000ef366cb4.jpg", title: "Премиум класс", desc: "Люксовые автомобили по высокой цене" },
+    { img: "https://cdn.poehali.dev/projects/94f46246-2443-478a-a915-e6ffdd5458ca/files/c64f0710-2b40-41c6-ac42-b3f0cc42323d.jpg", title: "После ДТП", desc: "Битые авто в любом состоянии" }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carSlides.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,11 +87,35 @@ const Index = () => {
               </div>
             </div>
             <div className="relative animate-fade-in">
-              <img 
-                src="https://cdn.poehali.dev/projects/94f46246-2443-478a-a915-e6ffdd5458ca/files/37076115-93ae-4344-8ff7-1358cedbdabf.jpg" 
-                alt="Автомобиль" 
-                className="rounded-2xl shadow-2xl hover-scale"
-              />
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl">
+                {carSlides.map((slide, idx) => (
+                  <div
+                    key={idx}
+                    className={`transition-opacity duration-1000 ${idx === currentSlide ? 'opacity-100' : 'opacity-0 absolute inset-0'}`}
+                  >
+                    <img 
+                      src={slide.img}
+                      alt={slide.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+                <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur p-4 rounded-xl">
+                  <h3 className="text-xl font-bold mb-1">{carSlides[currentSlide].title}</h3>
+                  <p className="text-sm text-gray-600">{carSlides[currentSlide].desc}</p>
+                </div>
+                <div className="absolute bottom-4 right-4 flex gap-2">
+                  {carSlides.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`w-2 h-2 rounded-full transition ${
+                        idx === currentSlide ? 'bg-primary w-8' : 'bg-white/50'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
               <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-xl">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -263,8 +303,9 @@ const Index = () => {
               <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Icon name="MapPin" size={28} className="text-primary" />
               </div>
-              <h3 className="font-bold text-lg mb-2">Адрес</h3>
-              <p className="text-gray-700">г. Новосибирск</p>
+              <h3 className="font-bold text-lg mb-2">География работы</h3>
+              <p className="text-gray-700">Анапа, Новороссийск</p>
+              <p className="text-gray-700">Геленджик и другие города</p>
               <p className="text-sm text-gray-600 mt-2">Выезд в любой район</p>
             </Card>
           </div>
@@ -279,7 +320,7 @@ const Index = () => {
                 <Icon name="Car" size={28} className="text-primary" />
                 <span className="text-xl font-bold">АвтоДвор</span>
               </div>
-              <p className="text-gray-400">Срочный выкуп автомобилей в Новосибирске</p>
+              <p className="text-gray-400">Срочный выкуп автомобилей в Анапе, Новороссийске, Геленджике и других городах</p>
             </div>
             
             <div>
@@ -297,7 +338,7 @@ const Index = () => {
               <ul className="space-y-2 text-gray-400">
                 <li>+7 (989) 838-08-88</li>
                 <li>info@avtodvor-nov.ru</li>
-                <li>г. Новосибирск</li>
+                <li>Анапа, Новороссийск, Геленджик</li>
               </ul>
             </div>
             
@@ -312,6 +353,16 @@ const Index = () => {
           </div>
         </div>
       </footer>
+
+      <a
+        href="https://wa.me/79898380888?text=Здравствуйте!%20Хочу%20узнать%20стоимость%20моего%20автомобиля"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition z-50 animate-pulse"
+        aria-label="Написать в WhatsApp"
+      >
+        <Icon name="MessageCircle" size={32} className="text-white" />
+      </a>
     </div>
   );
 };
